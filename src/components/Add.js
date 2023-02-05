@@ -8,6 +8,7 @@ import {Link,useNavigate} from 'react-router-dom';
 function Add(){
     const[name, setName] = useState('');
     const[DOB, setAge] = useState('');
+    const[email, setEmail] = useState('');
 
     
     let history= useNavigate();
@@ -19,9 +20,10 @@ function Add(){
         let uniqueId = ids.slice(0,8);
 
         let a = name,
-        b=DOB;
+        b=DOB,
+        c= email;
 
-        Employees.push({id: uniqueId, Name: a, DOB: b});
+        Employees.push({id: uniqueId, Name: a, DOB: b, email: c});
         history("/");
     }
 
@@ -34,6 +36,11 @@ function Add(){
             </Form.Group>
             <Form.Group className="mb-3" controlId="formAge">
                 <Form.Control style={{marginBottom:"15px"}} type = "date" placeholder="Enter DOB" required onChange={(e) => setAge(e.target.value
+                )}>
+                </Form.Control>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Control style={{marginBottom:"15px"}} type = "text" placeholder="Enter Email" required onChange={(e) => setAge(e.target.value
                 )}>
                 </Form.Control>
             </Form.Group>

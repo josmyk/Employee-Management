@@ -9,9 +9,10 @@ function Home()
     console.log(Employees)
     let history = useNavigate();
 
-    const handleEdit = (id, name, DOB) => {
+    const handleEdit = (id, name, DOB, email) => {
         localStorage.setItem('Name', name);
         localStorage.setItem('DOB', DOB);
+        localStorage.setItem('Email', email);
         localStorage.setItem('Id', id);
 
     }
@@ -40,6 +41,9 @@ function Home()
                             DOB
                         </th>
                         <th>
+                            Email Id
+                        </th>
+                        <th>
                             Actions
                         </th>
                     </tr>
@@ -57,9 +61,12 @@ function Home()
                                     <td>
                                         {item.DOB}
                                     </td>
+                                    <td>
+                                         {item.Email}
+                                    </td>
                                      <td>
                                         <Link to={'/edit'}>
-                                        <Button onClick={() => handleEdit(item.id, item.Name, item.DOB)}>EDIT</Button>
+                                        <Button onClick={() => handleEdit(item.id, item.Name, item.DOB, item.Email)}>EDIT</Button>
                                         </Link>
                                         &nbsp;
                                         <Button onClick={() => handleDelete(item.id)}>DELETE</Button>

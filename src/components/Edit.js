@@ -8,6 +8,7 @@ import {Link,useNavigate} from 'react-router-dom';
 function Edit(){
     const[name, setName] = useState('');
     const[dob, setAge] = useState('');
+    const[email, setEmail] = useState('');
     const[id, setId] = useState('');
 
     let history= useNavigate();
@@ -21,6 +22,7 @@ function Edit(){
         let a = Employees[index];
         a.Name = name;
         a.DOB = dob;
+        a.Email = email;
 
 
         history("/");
@@ -29,6 +31,7 @@ function Edit(){
     useEffect(() => {
         setName(localStorage.getItem('Name'))
         setAge(localStorage.getItem('DOB'))
+        setEmail(localStorage.getItem('Email'))
         setId(localStorage.getItem('Id'))
             },[])
 
@@ -43,6 +46,11 @@ return(
             </Form.Group>
             <Form.Group className="mb-3" controlId="formAge">
                 <Form.Control style={{marginBottom:"15px"}} type = "date" placeholder="Enter DOB" value={dob} required onChange={(e) => setAge(e.target.value
+                )}>
+                </Form.Control>
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Control style={{marginBottom:"15px"}} type = "text" placeholder="Enter Email" value={email} required onChange={(e) => setEmail(e.target.value
                 )}>
                 </Form.Control>
             </Form.Group>
